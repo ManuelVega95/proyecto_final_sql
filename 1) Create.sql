@@ -1,4 +1,4 @@
--- Creación de Schema y tablas iniciales: --
+-- Creación de Esquema: --
 
 DROP SCHEMA IF EXISTS Futbol_Proyecto_Final_SQL;
 
