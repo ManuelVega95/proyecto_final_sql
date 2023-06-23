@@ -27,6 +27,20 @@ Fecha_Upd_Ins_Del DATE,
 Hora_Upd_Ins_Del TIME
 );
 
+DROP TABLE IF EXISTS LOG_Seleccion; -- lo que se mostrará en esta tabla será la acción (upd, ins, del) realizada, con una breve descripción, el nombre de la selección que sufrirá cambios (por un lado el nombre antiguo, y por el otro el nuevo cuando sea necesario), el usuario que realizó el informe y la hora y fecha exacta en el que ocurrió.
+CREATE TABLE IF NOT EXISTS LOG_Seleccion (
+id_Log INT PRIMARY KEY AUTO_INCREMENT,
+Accion VARCHAR(25),
+Descripcion VARCHAR(100),
+Selección VARCHAR(100),
+Nombre_Selección_Nuevo VARCHAR(50),
+Usuario VARCHAR(100),
+Fecha_Upd_Ins_Del DATE,
+Hora_Upd_Ins_Del TIME
+);
+
+-- LOG_JUGADOR --
+
 -- Trigger INSERT para la tabla LOG_Jugador. Buscaremos informar acerca de los nuevos jugadores que se agreguen a la Base de Datos. --
 DROP TRIGGER IF EXISTS log_insertar_jugador;
 DELIMITER //
@@ -69,6 +83,8 @@ DELIMITER ;
 -- SELECT * FROM Jugador;
 -- SELECT * FROM LOG_Jugador;
 
+-- LOG_CLUB --
+
 -- Trigger INSERT para la tabla LOG_Club. Buscaremos informar acerca de los nuevos clubes que se agreguen a la Base de Datos.  --
 DROP TRIGGER IF EXISTS log_insertar_club;
 DELIMITER //
@@ -110,3 +126,47 @@ DELIMITER ;
 -- EJEMPLO: DELETE FROM Club WHERE id_Club = 21; -- el id_Club 21 existe en caso de que hayamos hecho el insert anterior, sino podemos usar alguno del 1 al 20.
 -- SELECT * FROM Club;
 -- SELECT * FROM LOG_Club;
+
+-- LOG_SELECCION --
+
+-- Trigger INSERT para la tabla LOG_Seleccion. Buscaremos informar acerca de las nuevas selecciones que se agreguen a la Base de Datos.  --
+DROP TRIGGER IF EXISTS log_insertar_seleccion;
+DELIMITER //
+CREATE TRIGGER log_insertar_seleccion AFTER INSERT ON Seleccion
+FOR EACH ROW
+BEGIN
+INSERT INTO LOG_Seleccion (Accion, Descripcion, Selección, Nombre_Selección_Nuevo, Usuario, Fecha_Upd_Ins_Del, Hora_Upd_Ins_Del) 
+VALUE ('Insert', concat('Se agregó a la selección: '), NEW.Pais, '', CURRENT_USER(), NOW(), NOW());
+END//
+DELIMITER ;
+-- EJEMPLO: INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos) VALUES ('campo1', 'campo2', 'campo3', '25.4', 10000, 1, 1);
+-- SELECT * FROM Seleccion;
+-- SELECT * FROM Seleccion;
+
+-- Trigger UPDATE para la tabla LOG_Seleccion. Se mostrarán los casos donde haya alguna modificación en la tabla Club.--
+DROP TRIGGER IF EXISTS log_modificar_seleccion;
+DELIMITER //
+CREATE TRIGGER log_modificar_seleccion AFTER UPDATE ON Seleccion
+FOR EACH ROW
+BEGIN
+INSERT INTO LOG_Seleccion (Accion, Descripcion, Selección, Nombre_Selección_Nuevo, Usuario, Fecha_Upd_Ins_Del, Hora_Upd_Ins_Del) 
+VALUE ('Update', concat('Se modificó a la selección: '), OLD.Pais, NEW.Pais, CURRENT_USER(), NOW(), NOW());
+END//
+DELIMITER ;
+-- EJEMPLO: UPDATE Seleccion SET Pais = 'campo2' WHERE id_Seleccion = 26; -- el id_Seleccion 26 existe en caso de que hayamos hecho el insert anterior, sino podemos usar alguna del 1 al 25.
+-- SELECT * FROM Seleccion;
+-- SELECT * FROM LOG_Seleccion;
+
+-- Trigger DELETE para la tabla LOG_Seleccion.  Se informará el momento exacto en el que cierto usuario elimine una selección de la Base de datos. --
+DROP TRIGGER IF EXISTS log_eliminar_seleccion;
+DELIMITER //
+CREATE TRIGGER log_eliminar_seleccion BEFORE DELETE ON Seleccion
+FOR EACH ROW
+BEGIN
+INSERT INTO LOG_Seleccion (Accion, Descripcion, Selección, Nombre_Selección_Nuevo, Usuario, Fecha_Upd_Ins_Del, Hora_Upd_Ins_Del) 
+VALUE ('Delete', concat('Se eliminó a la selección: '), OLD.Pais, '', CURRENT_USER(), NOW(), NOW());
+END//
+DELIMITER ;
+-- EJEMPLO: DELETE FROM Seleccion WHERE id_Seleccion = 26; -- el id_Seleccion 26 existe en caso de que hayamos hecho el insert anterior, sino podemos usar alguna del 1 al 25.
+-- SELECT * FROM Seleccion;
+-- SELECT * FROM LOG_Seleccion;
