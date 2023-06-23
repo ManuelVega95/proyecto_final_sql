@@ -143,7 +143,7 @@ DELIMITER ;
 -- SELECT * FROM Seleccion;
 -- SELECT * FROM Seleccion;
 
--- Trigger UPDATE para la tabla LOG_Seleccion. Se mostrarán los casos donde haya alguna modificación en la tabla Club.--
+-- Trigger UPDATE para la tabla LOG_Seleccion. Se mostrarán los casos donde haya alguna modificación en la tabla Seleccion.--
 DROP TRIGGER IF EXISTS log_modificar_seleccion;
 DELIMITER //
 CREATE TRIGGER log_modificar_seleccion AFTER UPDATE ON Seleccion
