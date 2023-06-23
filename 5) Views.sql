@@ -1,6 +1,7 @@
 -- VIEWS --
 
 -- View 1 --
+DROP VIEW IF EXISTS vw_Clubes_Argentinos;
 CREATE VIEW vw_Clubes_Argentinos as (
 SELECT *
 FROM Club
@@ -9,6 +10,7 @@ ORDER BY Nombre_Club ASC
 );
 
 -- View 2 --
+DROP VIEW IF EXISTS vw_Delanteros;
 CREATE VIEW vw_Delanteros as
 (SELECT id_Jugador as Id, Apellido_Jugador as Apellido, Nombre_Jugador as Nombre, Posición_Jugador as Posición, id_Club, Dorsal_Jugador as Dorsal
 FROM Jugador
@@ -17,12 +19,14 @@ ORDER BY Apellido_Jugador ASC
 );
 
 -- View 3 --
+DROP VIEW IF EXISTS vw_Promedio_Valor_Jugadores;
 CREATE VIEW vw_Promedio_Valor_Jugadores as
 (SELECT Count(*) as Total_Jugadores, AVG(Valor_Pase) as Promedio_Valor
 FROM Jugador
 );
 
 -- View 4 --
+DROP VIEW IF EXISTS vw_Copas_Sudamericanas_y_Europeas;
 CREATE VIEW vw_Copas_Sudamericanas_y_Europeas as
 (SELECT id_Torneo_Internacional as Id, Torneo_Internacional as Copa, Continente
 FROM Torneos_Internacionales
@@ -30,6 +34,7 @@ WHERE Continente like '%Sudamérica%' or Continente like '%Europa%'
 ); 
 
 -- View 5 --
+DROP VIEW IF EXISTS vw_Información_Completa;
 CREATE VIEW vw_Información_Completa as
 (SELECT j.id_Jugador as Id,
 j.Nombre_Jugador as Nombre, 
@@ -45,6 +50,7 @@ INNER JOIN Entrenador as en ON j.id_Jugador = en.id_Entrenador
 );
 
 -- View 6 --
+DROP VIEW IF EXISTS vw_Selecciones_Campeonas_del_Mundo;
 CREATE VIEW vw_Selecciones_Campeonas_del_Mundo as
 (SELECT s.id_Seleccion as Id,
 s.Pais as Seleccion,
@@ -58,6 +64,7 @@ ORDER BY c.Titulos DESC
 );
 
 -- View 7 --
+DROP VIEW IF EXISTS vw_Selecciones_Subcampeonas_del_Mundo;
 CREATE VIEW vw_Selecciones_Subcampeonas_del_Mundo as
 (SELECT s.id_Seleccion as Id,
 s.Pais as Seleccion,
@@ -72,6 +79,7 @@ ORDER BY c.Subcampeonatos DESC
 );
 
 -- View 8 --
+DROP VIEW IF EXISTS vw_Selecciones_Terceras_del_Mundo;
 CREATE VIEW vw_Selecciones_Terceras_del_Mundo as
 (SELECT s.id_Seleccion as Id,
 s.Pais as Seleccion,
@@ -87,6 +95,7 @@ ORDER BY c.Tercer_Puesto DESC
 );
 
 -- View 9 --
+DROP VIEW IF EXISTS vw_Selecciones_Cuartas_del_Mundo;
 CREATE VIEW vw_Selecciones_Cuartas_del_Mundo as
 (SELECT s.id_Seleccion as Id,
 s.Pais as Seleccion,
@@ -103,6 +112,7 @@ ORDER BY c.Cuarto_Puesto DESC
 );
 
 -- View 10 --
+DROP VIEW IF EXISTS vw_Selecciones_Top_4_de_Mundiales;
 CREATE VIEW vw_Selecciones_Top_4_de_Mundiales as
 (SELECT s.id_Seleccion as Id,
 s.Pais as Seleccion,
@@ -119,6 +129,7 @@ ORDER BY s.Pais ASC
 );
 
 -- View 11 --
+DROP VIEW IF EXISTS vw_Selecciones_Nacionales;
 CREATE VIEW vw_Selecciones_Nacionales as
 (SELECT s.id_Seleccion as Id,
 s.Pais as Seleccion,
