@@ -47,3 +47,6 @@ log_eliminar_jugador; -- Tablas Jugador y LOG_Jugador.
 log_insertar_club; -- Tablas Club y LOG_Club.
 log_modificar_club; -- Tablas Club y LOG_Club.
 log_eliminar_club; -- Tablas Club y LOG_Club.
+log_insertar_seleccion; -- Tablas Seleccion y LOG_Seleccion.
+log_modificar_seleccion; -- Tablas Seleccion y LOG_Seleccion.
+log_eliminar_seleccion; -- Tablas Seleccion y LOG_Seleccion.
