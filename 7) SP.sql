@@ -14,8 +14,9 @@ BEGIN
 END // 
 DELIMITER ;
 
--- CALL sp_ordenar_clubes('', ''); 
--- en el primer parámetro hay que agregar el nombre de una columna de la tabla Club (SELECT * FROM Club), y en el otro parámetro ASC o DESC para ver el orden requerido. EJEMPLO: CALL sp_ordenar_clubes('Nombre_Club', 'DESC'); 
+-- CALL sp_ordenar_clubes('', ''); -- en el primer parámetro hay que agregar el nombre de una columna de la tabla Club (SELECT * FROM Club), y en el otro parámetro ASC o DESC para ver el orden requerido. 
+-- EJEMPLO: CALL sp_ordenar_clubes('Nombre_Club', 'DESC'); 
+-- SELECT * FROM CLUB;
 
 -- SP 2 -- 
 DROP PROCEDURE IF EXISTS sp_insertar_clubes;
@@ -32,31 +33,45 @@ END //
 DELIMITER ;
 
 -- CALL sp_insertar_clubes('', '', ''); -- en este ejemplo, habría que agregar el nombre del club, abreviatura del club, y país del club (SELECT * FROM Club) para agregar un club nuevo. Como el ID tiene auto_increment, no es necesario añadirlo.
--- usando el SELECT * FROM Club podemos comprobar que se agregaron los datos.
+-- EJEMPLO: CALL sp_insertar_clubes('campo1', 'campo2', 'campo3');
+-- SELECT * FROM CLUB;
+-- SELECT * FROM Log_Club;
 
 -- SP 3 -- 
 DROP PROCEDURE IF EXISTS sp_eliminar_jugador;
 DELIMITER //
 CREATE PROCEDURE sp_eliminar_jugador (
-									IN e_id_Jugador INT
+									IN j_id_Jugador INT
                                     )
 BEGIN
-	DELETE FROM Jugador WHERE id_Jugador = e_id_Jugador;
+	DELETE FROM Jugador WHERE id_Jugador = j_id_Jugador;
 END //
 DELIMITER ;
 
 -- CALL sp_eliminar_jugador(); -- la idea es eliminar un jugador de la base de datos usando un ítem de la columna id_Jugador (SELECT * FROM Jugador)
+-- EJEMPLO: CALL sp_eliminar_jugador(20);
+-- SELECT * FROM JUGADOR;
+-- SELECT * FROM Log_Jugador;
 
 -- SP 4 -- 
 DROP PROCEDURE IF EXISTS sp_editar_seleccion;
 DELIMITER //
 CREATE PROCEDURE sp_editar_seleccion (
-									IN e_Pais VARCHAR(150),
-                                    IN e_id_Seleccion INT
+									IN s_Pais VARCHAR(50),
+                                    IN s_Continente VARCHAR(50),
+                                    IN s_Confederacion VARCHAR(50),
+                                    IN s_Promedio_Edad DECIMAL (6,2),
+                                    IN s_Valor BIGINT,
+                                    IN s_Cantidad_Jugadores TINYINT,
+                                    IN s_Puntos SMALLINT,
+                                    IN s_id_Seleccion INT
                                     )
 BEGIN
-	UPDATE Seleccion SET Pais = e_Pais WHERE id_Seleccion = e_id_Seleccion;
+	UPDATE Seleccion SET Pais = s_Pais, Continente = s_Continente, Confederacion = s_Confederacion, Promedio_Edad = s_Promedio_Edad, Valor = s_Valor, Cantidad_Jugadores = S_Cantidad_Jugadores, Puntos = s_Puntos WHERE id_Seleccion = s_id_Seleccion;
 END //
 DELIMITER ;
 
--- CALL sp_editar_seleccion('', ); -- la idea es editar, según el id que sería el segundo parámetro a elegir, el nombre del país de alguna selección de la base de datos (SELECT * FROM Seleccion)
+-- CALL sp_editar_seleccion('', '', '', '', '', '', '',  ); -- la idea es editar, según el id que sería el segundo parámetro a elegir, el país de la base de datos, modificando todos sus campos (SELECT * FROM Seleccion)
+-- EJEMPLO: CALL sp_editar_seleccion('campo1', 'campo2', 'campo3', '25.5', '10000000', '32', '3500', 3 );
+-- SELECT * FROM SELECCION;
+-- SELECT * FROM Log_Seleccion;
