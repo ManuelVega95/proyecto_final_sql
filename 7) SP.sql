@@ -46,3 +46,17 @@ END //
 DELIMITER ;
 
 -- CALL sp_eliminar_jugador(); -- la idea es eliminar un jugador de la base de datos usando un ítem de la columna id_Jugador (SELECT * FROM Jugador)
+
+-- SP 4 -- 
+DROP PROCEDURE IF EXISTS sp_editar_seleccion;
+DELIMITER //
+CREATE PROCEDURE sp_editar_seleccion (
+									IN e_Pais VARCHAR(150),
+                                    IN e_id_Seleccion INT
+                                    )
+BEGIN
+	UPDATE Seleccion SET Pais = e_Pais WHERE id_Seleccion = e_id_Seleccion;
+END //
+DELIMITER ;
+
+-- CALL sp_editar_seleccion('', ); -- la idea es editar, según el id que sería el segundo parámetro a elegir, el nombre del país de alguna selección de la base de datos (SELECT * FROM Seleccion)
