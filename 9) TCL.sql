@@ -18,11 +18,11 @@ DELETE FROM Seleccion WHERE id_Seleccion = 25;
 -- rollback;
 -- commit;
 
-INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos)
-VALUES('Nigeria', 'África', 'CAF', '26.2', '347000000', '23', '1481');
+-- INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos)
+-- VALUES('Nigeria', 'África', 'CAF', '26.2', '347000000', '23', '1481');
 
-INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos)
-VALUES('Noruega', 'Europa', 'UEFA', '26.5', '395000000', '25', '1464');
+-- INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos)
+-- VALUES('Noruega', 'Europa', 'UEFA', '26.5', '395000000', '25', '1464');
 
 -- TCL 2 - AGREGAR REGISTROS --
 
@@ -56,5 +56,5 @@ VALUES('Celtic', 'CEL', 'Escocia', '28', '28', '18', '3');
 
 SAVEPOINT Clubes_Internacionales;
 
--- RELEASE SAVEPOINT Clubes_Argentinos; - eliminamos el primer savepoint.
+-- RELEASE SAVEPOINT Clubes_Argentinos; -- eliminamos el primer savepoint.
 -- commit;
