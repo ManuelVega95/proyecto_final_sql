@@ -71,7 +71,7 @@ BEGIN
 END //
 DELIMITER ;
 
--- CALL sp_editar_seleccion('', '', '', '', '', '', '',  ); -- la idea es editar, según el id que sería el segundo parámetro a elegir, el país de la base de datos, modificando todos sus campos (SELECT * FROM Seleccion)
+-- CALL sp_editar_seleccion('', '', '', '', '', '', '',  ); -- la idea es editar, según el id que sería el último parámetro a elegir, el país de la base de datos, modificando todos sus campos (SELECT * FROM Seleccion)
 -- EJEMPLO: CALL sp_editar_seleccion('campo1', 'campo2', 'campo3', '25.5', '10000000', '32', '3500', 3 );
 -- SELECT * FROM SELECCION;
 -- SELECT * FROM Log_Seleccion;
