@@ -16,28 +16,34 @@ SELECT * FROM LOG_Club;
 
 -- VIEWS --
 
-SELECT * FROM vw_Clubes_Argentinos; - Tabla Club. El objetivo de esta vista es poder traer todos los clubes argentinos que tengamos en la base de datos. 
-SELECT * FROM vw_Delanteros; - Tabla Jugador. En esta vista traeremos todos los delanteros que tengamos en la base de datos.
-SELECT * FROM vw_Promedio_Valor_Jugadores; - Tabla Jugador. Podemos tener un promedio del valor general de todos los jugadores.
-SELECT * FROM vw_Copas_Sudamericanas_y_Europeas; - Tabla Torneos Internacionales. En esta vista identificamos qué competencias americanas y europeas tenemos en la base de datos.
-SELECT * FROM vw_Información_Completa; - Tablas Jugador, Entrenador, Estadio, Club. En esta vista traemos cada jugador con su nombre, apellido y nacionalidad, en qué club juega con su estadio y su entrenador.
+SELECT * FROM vw_Clubes_Argentinos; -- Tabla Club. El objetivo de esta vista es poder traer todos los clubes argentinos que tengamos en la base de datos. 
+SELECT * FROM vw_Delanteros; -- Tabla Jugador. En esta vista traeremos todos los delanteros que tengamos en la base de datos.
+SELECT * FROM vw_Promedio_Valor_Jugadores; -- Tabla Jugador. Podemos tener un promedio del valor general de todos los jugadores.
+SELECT * FROM vw_Copas_Sudamericanas_y_Europeas; -- Tabla Torneos Internacionales. En esta vista identificamos qué competencias americanas y europeas tenemos en la base de datos.
+SELECT * FROM vw_Información_Completa; -- Tablas Jugador, Entrenador, Estadio, Club. En esta vista traemos cada jugador con su nombre, apellido y nacionalidad, en qué club juega con su estadio y su entrenador.
+SELECT * FROM vw_Selecciones_Campeonas_del_Mundo; -- Tablas Seleccion, Copas_del_Mundo. En esta vista podremos ver únicamente las selecciones nacionales que hayan sido campeonas del Mundial de fútbol en alguna oportunidad, ordenadas según la cantidad de títulos que hayan obtenido.
+SELECT * FROM vw_Selecciones_Subcampeonas_del_Mundo; -- Tablas Seleccion, Copas_del_Mundo. En esta vista podremos ver únicamente las selecciones nacionales que hayan sido subcampeonas del Mundial de fútbol en alguna oportunidad, ordenadas según la cantidad de veces que hayan obtenido el segundo lugar.
+SELECT * FROM vw_Selecciones_Terceras_del_Mundo; -- Tablas Seleccion, Copas_del_Mundo. En esta vista podremos ver únicamente las selecciones nacionales que hayan terminado en el tercer puesto del Mundial de fútbol en alguna oportunidad, ordenadas según la cantidad de veces que hayan terminado en el tercer lugar.
+SELECT * FROM vw_Selecciones_Cuartas_del_Mundo; -- Tablas Seleccion, Copas_del_Mundo. En esta vista podremos ver únicamente las selecciones nacionales que hayan terminado en el cuarto puesto del Mundial de fútbol en alguna oportunidad, ordenadas según la cantidad de veces que hayan terminado en el cuarto lugar.
+SELECT * FROM vw_Selecciones_Top_4_de_Mundiales; -- Tablas Seleccion, Copas_del_Mundo. En esta vista obtendremos un listado de todas las selecciones nacionales que hayan quedado alguna vez entre los primeros cuatro lugares en los Mundiales de fútbol, ordenadas según la cantidad de títulos.
+SELECT * FROM vw_Selecciones_Nacionales; -- Tablas Seleccion, Copas_del_Mundo. En esta vista tendremos a todas las selecciones nacionales de la base de datos, ordenadas según la cantidad de títulos que hayan conseguido en un Mundial de fútbol.
 
 -- FUNCIONES --
 
-SELECT fn_letra_club('') as Clubes_con_X_letra; - Tabla Club. Esta función tiene de utilidad que podemos traer la cantidad de clubes que tienen cierta letra. 
+SELECT fn_letra_club('') as Clubes_con_X_letra; -- Tabla Club. Esta función tiene de utilidad que podemos traer la cantidad de clubes que tienen cierta letra. 
 SELECT fn_paises_clubes('') as Cantidad_Clubes; - Tabla Club. En esta función, con escribir el nombre de cualquier país sabremos exactamente la cantidad que clubes que sean de ese país.
 
 -- STORE PROCEDURES --
 
-CALL sp_ordenar_clubes('', ''); - Tabla Club. Con esta SP podemos ordenar los clubes que tengamos en la tabla Club, y elegiremos con el segundo parámetro si queremos que sea de orden ASC o DESC.
-CALL sp_insertar_clubes('', '', ''); - Tabla Club. Acá podemos usar esta SP para agregar clubes con sus 3 datos más importantes.
+CALL sp_ordenar_clubes('', ''); -- Tabla Club. Con esta SP podemos ordenar los clubes que tengamos en la tabla Club, y elegiremos con el segundo parámetro si queremos que sea de orden ASC o DESC.
+CALL sp_insertar_clubes('', '', ''); -- Tabla Club. Acá podemos usar esta SP para agregar clubes con sus 3 datos más importantes.
 CALL sp_eliminar_jugador(); - Tabla Jugador. Sirve para eliminar algún jugador de la base de datos.
 
 -- TRIGGERS --
 
-log_insertar_jugador; - Tablas Jugador y LOG_Jugador.
-log_editar_jugador; - Tablas Jugador y LOG_Jugador.
-log_eliminar_jugador; - Tablas Jugador y LOG_Jugador.
-log_insertar_club; - Tablas Club y LOG_Club.
-log_modificar_club; - Tablas Club y LOG_Club.
-log_eliminar_club; - Tablas Club y LOG_Club.
+log_insertar_jugador; -- Tablas Jugador y LOG_Jugador.
+log_editar_jugador; -- Tablas Jugador y LOG_Jugador.
+log_eliminar_jugador; -- Tablas Jugador y LOG_Jugador.
+log_insertar_club; -- Tablas Club y LOG_Club.
+log_modificar_club; -- Tablas Club y LOG_Club.
+log_eliminar_club; -- Tablas Club y LOG_Club.
