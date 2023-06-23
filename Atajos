@@ -34,12 +34,12 @@ SELECT * FROM vw_Selecciones_Nacionales; -- Tablas Seleccion, Copas_del_Mundo. E
 SELECT fn_letra_club('') as Clubes_con_X_letra; -- Tabla Club. Esta función tiene de utilidad que podemos traer la cantidad de clubes que tienen cierta letra. 
 SELECT fn_paises_clubes('') as Cantidad_Clubes; - Tabla Club. En esta función, con escribir el nombre de cualquier país sabremos exactamente la cantidad que clubes que sean de ese país.
 
--- STORE PROCEDURES --
+-- STORED PROCEDURES --
 
 CALL sp_ordenar_clubes('', ''); -- Tabla Club. Con esta SP podemos ordenar los clubes que tengamos en la tabla Club, y elegiremos con el segundo parámetro si queremos que sea de orden ASC o DESC.
 CALL sp_insertar_clubes('', '', ''); -- Tabla Club. Acá podemos usar esta SP para agregar clubes con sus 3 datos más importantes.
 CALL sp_eliminar_jugador(); - Tabla Jugador. Sirve para eliminar algún jugador de la base de datos.
-CALL sp_editar_seleccion('', '', '', '', '', '', '', ); - Tabla Seleccion. Sirve para editar alguna selección de la base de datos.
+CALL sp_editar_seleccion('', '', '', '', '', '', '', ); - Tabla Seleccion. Sirve para editar alguna selección usando todos sus datos.
 
 -- TRIGGERS --
 
