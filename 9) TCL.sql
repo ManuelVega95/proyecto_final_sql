@@ -9,20 +9,23 @@ SET @@AUTOCOMMIT = 0; -- Se necesita poner el autocommit en 0 para desactivar la
 
 START TRANSACTION;
 
-DELETE FROM Seleccion WHERE id_Seleccion = 24;
--- SELECT * FROM Seleccion;
+DELETE FROM Jugador WHERE id_Jugador = 19;
+-- SELECT * FROM Jugador;
 -- rollback;
 -- commit;
-DELETE FROM Seleccion WHERE id_Seleccion = 25;
--- SELECT * FROM Seleccion;
+DELETE FROM Jugador WHERE id_Jugador = 20;
+-- SELECT * FROM Jugador;
 -- rollback;
 -- commit;
 
--- INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos)
--- VALUES('Nigeria', 'África', 'CAF', '26.2', '347000000', '23', '1481');
+-- 19 --
+-- INSERT INTO Jugador (Nombre_Jugador, Apellido_Jugador, Nacionalidad_Jugador, Posición_Jugador, Dorsal_Jugador, Altura_Jugador, Valor_Pase, id_Seleccion, id_Club, id_Entrenador, Fecha_Nacimiento )
+-- VALUES('Martin', 'Ødegaard', 'Noruego', 'Mediocampista', '8', '1.78', 80000000, '25', '19', '19', '1998-12-17');
 
--- INSERT INTO Seleccion (Pais, Continente, Confederacion, Promedio_Edad, Valor, Cantidad_Jugadores, Puntos)
--- VALUES('Noruega', 'Europa', 'UEFA', '26.5', '395000000', '25', '1464');
+-- 20 --
+-- INSERT INTO Jugador (Nombre_Jugador, Apellido_Jugador, Nacionalidad_Jugador, Posición_Jugador, Dorsal_Jugador, Altura_Jugador, Valor_Pase, id_Seleccion, id_Club, id_Entrenador, Fecha_Nacimiento )
+-- VALUES('Virgil', 'Van Dijk', 'Holandés', 'Defensor', '4', '1.93', 45000000, '6', '20', '20', '1991-07-08');
+
 
 -- TCL 2 - AGREGAR REGISTROS --
 
